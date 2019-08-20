@@ -1,6 +1,6 @@
 {
   "name": "radius-monitor",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "RADIUS server monitor package",
   "main": "index.js",
   "directories": {
