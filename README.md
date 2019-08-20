@@ -1,5 +1,5 @@
-# RADIUS Monitor
-A basic implementation of the Remote Authentication Dial In User Service (RADIUS) server ([RFC2865](https://tools.ietf.org/html/rfc2865)).
+# RADIUS Monitor [![npm version](https://badge.fury.io/js/radius-monitor.svg)](https://badge.fury.io/js/radius-monitor)
+A basic implementation of the Remote Authentication Dial In User Service (RADIUS) server ([RFC2865](https://tools.ietf.org/html/rfc2865)). The package can be used to monitor the RADIUS request that a client is sending to a server.
 
 ## Install
 ```sh
@@ -196,6 +196,27 @@ The value is a hex string denoting the value of the attribute. An example of ```
   "Tunnel-Private-Group-Id": Buffer.from([0x32]).toString("hex"),
 },        
 ```
+
+### ```messageCallback```
+The callback function ```messageCallback``` is invoked when the RADIUS server receives a message from the client.
+
+The function ```messageCallback``` accept as input the address and the port of the client, and the RADIUS packet that was received (described above).
+
+ - ```address <string>``` 
+ - ```port <number>```
+ - ```packet <Object>```
+
+```javascript
+function messageCallback(address, port, packet) {
+  // Process packet
+  return {
+    code: "Access-Accept",
+    attributes: {},
+  }
+}
+```
+If the ```messageCallback``` returns a non empty packet with a given ```code``` field and a ```attributes``` (can be empty) then the packet is sent to the client.
+
 ## RADIUS protocol description
 Exactly one RADIUS packet is encapsulated in the UDP Data field, where the UDP Destination Port field indicates ```1812``` (decimal). When a reply is generated, the source and destination ports are reversed. 
 
