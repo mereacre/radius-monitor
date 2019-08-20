@@ -198,7 +198,7 @@ The value is a hex string denoting the value of the attribute. An example of ```
 ```
 
 ### ```messageCallback```
-The callback function ```messageCallback``` is invoked when the RADIUS server receives a message from the client.
+The async callback function ```messageCallback``` is invoked when the RADIUS server receives a message from the client.
 
 The function ```messageCallback``` accept as input the address and the port of the client, and the RADIUS packet that was received (described above).
 
@@ -207,7 +207,7 @@ The function ```messageCallback``` accept as input the address and the port of t
  - ```packet <Object>```
 
 ```javascript
-function messageCallback(address, port, packet) {
+async function messageCallback(address, port, packet) {
   // Process packet
   return {
     code: "Access-Accept",
