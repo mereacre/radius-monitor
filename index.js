@@ -52,7 +52,9 @@ function startServer(serverCallbacks, password, port = RADIUS_PORT) {
       serverCallbacks.listenCallback(address)
   });
   
-  server.bind(port);  
+  server.bind(port);
+
+  return server;
 }
 
 module.exports = {

@@ -60,7 +60,7 @@ radius.startServer(serverCallbacks, "password");
 ## Documentation
 
 ### ```startServer```
-The radius-monitor package exposes only the function ```startServer``` to read/write RADIUS messages from/to clients. The function accepts three arguments: a dictionary with callback functions, the password that a client uses to connect to the server and the port number to listen for client messages. The default value for the port is ```1812``` as per ([RFC2865](https://tools.ietf.org/html/rfc2865)). The function ```startServer``` opens a UDP server on the default port ```1812``` if not specified. 
+The radius-monitor package exposes only the function ```startServer``` to read/write RADIUS messages from/to clients. The function accepts three arguments: a dictionary with callback functions, the password that a client uses to connect to the server and the port number to listen for client messages. The default value for the port is ```1812``` as per ([RFC2865](https://tools.ietf.org/html/rfc2865)). The function ```startServer``` opens a UDP server on the default port ```1812``` if not specified. The function returns the instance of the UDP server. 
 
 Below is an example of calling the ```startServer``` function with password ```password``` and port ```1812```:
 
@@ -76,7 +76,7 @@ const serverCallbacks = {
   sentCallback: sentCallback,
 };
 
-radius.startServer(serverCallbacks, "password", 1812);
+const serverUDP = radius.startServer(serverCallbacks, "password", 1812);
 ```
 
 ### ```errorCallback```
